@@ -1,0 +1,1 @@
+self.addEventListener('install',e=>self.skipWaiting());self.addEventListener('activate',e=>self.clients.claim());self.addEventListener('fetch',e=>{e.respondWith(caches.open('estoque-v1').then(async c=>{try{const r=await fetch(e.request);c.put(e.request,r.clone());return r}catch{return c.match(e.request)}}))});
